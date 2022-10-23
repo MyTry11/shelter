@@ -1,0 +1,496 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  letter-spacing: 0.06rem;
+  font-weight: 400;
+  font-family: var(--ff-primary);
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+} 
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root{
+  /* font-colors */
+  --clr-primary: #F1CDB3;
+  --clr-primary-light: #FDDCC4;
+  --clr-light-xl: white;
+  --clr-light-s: #FAFAFA;
+  --clr-dark-s: #CDCDCD;
+  --clr-dark-3xl: #292929;
+  --clr-dark-l: #545454;
+  --clr-dark-xl: #4C4C4C;
+  --clr-dark-m: #B2B2B2;
+  /* font-size */
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-15: 15px;
+  --fs-17: 17px;
+  --fs-20: 20px;
+  --fs-25: 25px;
+  --fs-32: 32px;
+  --fs-35: 35px;
+  --fs-44: 44px;
+  /* font family */
+  --ff-primary: Georgia, serif;
+  --ff-second: Arial, serif;
+  /* line height */
+  --lh-15: 15px;
+  --lh-16: 16.5px;
+  --lh-18: 18px;
+  --lh-22: 22px;
+  --lh-23: 23px;
+  --lh-24: 24px;
+  --lh-35: 35.2px;
+  --lh-45: 45.5px;
+  --lh-52: 52.2px;
+  --lh-57: 57px;
+}
+/* css */
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header_content {
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  width: 1280px;
+}
+
+.header_burger_btn {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1279px){
+  .header_content {
+    padding: 30px 30px 30px 30px;
+  }
+  .header_ul {
+    padding-inline-start: 0;
+  }
+}
+
+.header_ul {
+    display: flex;
+}
+.header_ul_li {
+  margin-left: 35px;
+}
+
+h1 {
+  font-size: var(--fs-32);
+  line-height: var(--lh-35);
+  color: var(--clr-dark-l);
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+.logo_subname {
+  font-size: var(--fs-13);
+  line-height: var(--lh-15);
+  color: var(--clr-dark-3xl);
+  font-family: var(--ff-second);
+  white-space: nowrap;
+}
+
+.header_ul_li {
+  margin-left: 35px;
+  font-family: var(--ff-second);
+  font-size: var(--fs-15);
+  line-height: var(--lh-24);
+  color: var(--clr-dark-l);
+  white-space: nowrap;
+}
+
+.header_ul_li:first-child{
+  margin-left: 0;
+}
+
+.header_ul_li_our-pets_link {
+  text-decoration: var(--clr-primary) underline 3px;
+  color: var(--clr-dark-3xl);
+  text-underline-offset: 7px;
+}
+
+@media (min-width: 320px) and (max-width: 767px){
+  .header_content {
+    padding: 30px 53px 60px 10px;
+  }
+
+  .header_burger_btn {
+    display: block;
+  }
+
+  .header_nav {
+    display: none;
+  }
+}
+
+
+.pets {
+    display: flex;
+    justify-content: center;
+    background-color: #F6F6F6;
+
+  }
+
+  .pets_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+  }
+  
+  .pets_h3 {
+    max-width: 400px;
+    max-height: 90px;
+    margin: 80px 0px 45px;
+    text-align: center;
+  }
+  
+  .pets_slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    margin-bottom: 45px;
+  }
+ 
+  
+  .slider_card {
+    max-width: 270px;
+    min-height: 435px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--clr-light-s);
+    margin-bottom: 15px;
+  }
+
+  .slider_card:nth-child(-n+4) {
+    margin-bottom: 30px;
+  }
+  .margin-right_0{
+    margin-right: 0px;
+  }
+  
+  .slider_card_img, .slider_card_p, .slider_card_btn {
+    margin-bottom: 30px;
+  }
+  
+  .slider_prev_btn {
+    margin-right: 53px;
+  }
+  
+  .slider_next_btn {
+    margin-left: 53px;
+  }
+  
+  .pets_btn {
+    margin-top: 60px;
+  }
+
+  
+
+.pets_h3 {
+  color: var(--clr-dark-l);
+  font-size: var(--fs-35);
+  line-height: var(--lh-45);
+}
+
+.slider_card_p {
+  color: var(--clr-dark_l);
+  font-size: var(--fs-20);
+  line-height: var(--lh-22);
+}
+
+.slider_card_btn {
+  color: var(--clr-dark-3xl);
+  font-size: var(--fs-17);
+  line-height: var(--lh-22);
+  width: 187px;
+  height: 52px;
+  background-color: white;
+  border-radius: 100px;
+  border: 2px solid var(--clr-primary);
+}
+
+.slider_btns {
+  display: flex;
+  width: 340px;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.slider_card_btn:hover {
+  background-color: var(--clr-primary-light);
+  border-color: var(--clr-primary-light);
+  transition: 0.3s;
+}
+
+.slider_btn_first, .slider_btn_prev{
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  border: 2px solid var(--clr-dark-s);
+  background-color: #fff;
+}
+
+.slider_page_number{
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  border: 2px solid var(--clr-primary);
+  background-color: var(--clr-primary);
+  font-size: var(--fs-20);
+}
+
+.slider_btn_next, .slider_btn_last {
+  width: 52px;
+  height: 52px;
+  border-radius: 100px;
+  border: 2px solid var(--clr-primary);
+  background-color: white;
+}
+@media (min-width: 768px) and (max-width: 1279px){
+  .pets_content {
+    max-width: 768px;
+  }
+
+  .pets_slider {
+    max-width: 580px;
+    margin-bottom: 10px;
+  }
+
+  .slider_card {
+    margin-bottom: 30px;
+  }
+
+  .pets_h3 {
+    margin-bottom: 30px;
+  }
+  .slider_btns {
+    margin-bottom: 76px;
+  }
+
+  .slider_card:nth-last-child(-n+2){
+    display: none;
+  }
+  
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .pets_content{
+    max-width: 300px;
+    padding: 42px 10px;
+  }
+  .pets_h3 {
+    margin: 0 0 42px 0;
+  }
+
+  .slider_btns {
+    width: 300px;
+    margin: 0;
+  }
+  .pets_slider {
+    margin-bottom: 45px;
+  }
+
+  
+  .slider_card:nth-last-child(-n+5){
+    display: none;
+  }
+
+}
+
+
+.footer {
+  display: flex;
+  background: linear-gradient(to bottom right, #5B483A, #262425);
+  letter-spacing: var(--ls-6);
+  justify-content: center;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+  width: 1280px;
+  padding: 40px 40px 0;
+} 
+
+.boston, .london {
+  display: flex;
+}
+
+.email_field, .phone-number_field {
+  display: flex;  
+}
+
+.email, .phone-number {
+  margin-left: 20px;
+}
+
+.contacts_h3, .email_field, .phone-number_field {
+  margin-bottom: 40px;
+}
+
+.adress_h3, .boston, .london {
+  margin-bottom: 32px;
+}
+.boston_adress, .london_adress {
+  margin-left: 20px;
+}
+  
+  
+@media (min-width: 768px) and (max-width: 1279px) {
+  .footer_content{
+    width: 768px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 768px;
+    justify-content: baseline;
+    padding: 30px 30px 0;
+  }
+  .footer_img {
+    margin: 0 auto;
+  }
+  .contacts {
+    padding-left: 34px;
+    margin-bottom: 65px;
+  }
+
+  .adress {
+    padding-right: 34px;
+  }
+  .phone-number_field, .london {
+    margin-bottom: 0;
+  }
+}
+    .contacts_h3, .adress_h3 {
+  color: var(--clr-light-xl);
+  font-size: var(--fs-35);
+  line-height: var(--lh-45);
+}
+
+.email, .phone-number, .boston_adress, .london_adress {
+  color: var(--clr-primary);
+  font-size: var(--fs-20);
+  line-height: var(--lh-23);
+}
+
+@media (min-width: 320px) and (max-width: 767px){
+  .footer_content {
+    flex-direction: column;
+    width: 300px;
+    padding: 30px 10px 0;
+    align-items: center;
+  }
+
+  .contacts_h3, .adress_h3 {
+    text-align: center;
+  }
+
+  .adress_h3, .boston {
+    margin-bottom: 40px;
+  }
+
+  .london {
+    margin-bottom: 45px;
+  }
+
+  .start_h2, .pets_h3, .help_h3, .donation_h3, .contacts_h3, .adress_h3 {
+    font-size: var(--fs-25);
+    line-height: var(--lh-32);
+  }
+}
