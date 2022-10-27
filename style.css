@@ -670,7 +670,6 @@ h1 {
   border: none;
   border-radius: 9px;
   padding: 0;
-  /* display: flex; */
 }
 .modal_container {
   display: flex;
@@ -707,18 +706,31 @@ h1 {
 
   .pets_cards_container{
     padding: 0 12px;
+    width: 580px;
   }
   
   .slider_card {
     margin: 0;
   }
 
-  .first_card {
-    margin-right: 40px;
+  .slide {
+    width: 580px;
   }
 
   .third_card {
     display: none;
+  }
+  .modal {
+    width: 630px;
+    height: 350px;
+  }
+  .modal_img {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .modal_text-content {
+    width: 260px;
   }
 }
 
@@ -759,7 +771,11 @@ h1 {
   }
   .pets_cards_container {
     width: 270px;
-    
+    padding: 0;
+  }
+
+  .slide {
+    width: 270px;
   }
 
   .pets_slider {
@@ -767,6 +783,30 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     margin-bottom: 0;
+  }
+  .modal {
+    width: 240px;
+    height: 341px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+  .modal_img {
+    display: none;
+  }
+  
+  .modal_text-content {
+    width: 220px;
+    height: 321px;
+    padding: 10px;
+  }
+  .close-modal {
+    right: 5px;
+    top: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
   }
   .slider_prev_btn, .slider_next_btn {
     order: 1;
@@ -782,10 +822,6 @@ h1 {
 
   .slider_card {
     margin: 0;
-  }
-
-  .pets_cards_container {
-    padding: 0;
   }
 
   .pets_h3 {

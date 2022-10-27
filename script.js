@@ -19,6 +19,9 @@ const slideWidth = slides[0].getBoundingClientRect().width;
 const modal = document.querySelector("#modal");
 const openModal = document.querySelectorAll(".open-modal");
 const closeModal = document.querySelector(".close-modal");
+let cardsCount = '';
+
+console.log(slideWidth);
 
 // const modalh3 = document.querySelector('.modal_h3')
 // modalh3.textContent = 'Woody'
@@ -70,76 +73,48 @@ const colors = [
 
 const randomPet = function (obj) {
     const keys = Object.keys(obj);
-    return obj[keys[ keys.length * Math.random() << 0]]
+    return obj[keys[keys.length * Math.random() << 0]]
 };
 
-function moveToSlide(slider, currentSlide, targetSlide) {
+function cardsCounter() {
+    if(slideWidth >= 1096) {
+        cardsCount = 3
+    } else if(slideWidth >= 580) {
+        cardsCount = 2
+    } else if(slideWidth >= 270) {
+        cardsCount = 1
+    }
+    console.log(cardsCount);
+}
+cardsCounter()
 
+function moveToSlide(slider, currentSlide, targetSlide) {
     if (!targetSlide) {
-        
         targetSlide = document.createElement('li')
         targetSlide.classList.add('slide')
         currentSlide === slides[slides.length - 1]
           ? (slider.append(targetSlide), slides.push(targetSlide))
           : (slider.prepend(targetSlide), slides.unshift(targetSlide))
         slides.forEach(setSlidePosition);
-
-        const sliderCardNames = targetSlide.querySelectorAll('.slider_card_p')
-        const div1 = document.createElement('div')
-        const div2 = document.createElement('div')
-        const div3 = document.createElement('div')
-        div1.classList.add('slider_card')
-        div2.classList.add('slider_card')
-        div3.classList.add('slider_card')
-        targetSlide.append(div1)
-        targetSlide.append(div2)
-        targetSlide.append(div3)
-        
-        const pet1 = randomPet(petsObj);
-        const pet2 = randomPet(petsObj);
-        const pet3 = randomPet(petsObj);
-        const img1 = document.createElement('img')
-        const img2 = document.createElement('img')
-        const img3 = document.createElement('img')
-        img1.classList.add('slider_card_img')
-        img2.classList.add('slider_card_img')
-        img3.classList.add('slider_card_img')
-            
-        img1.src = pet1.img
-        img2.src = pet2.img
-        img3.src = pet3.img
-        div1.append(img1)
-        div2.append(img2)
-        div3.append(img3)
-
-        const p1 = document.createElement('p')
-        const p2 = document.createElement('p')
-        const p3 = document.createElement('p')
-        p1.innerHTML = pet1.name
-        p2.innerHTML = pet2.name
-        p3.innerHTML = pet3.name
-        p1.classList.add('slider_card_p')
-        p2.classList.add('slider_card_p')
-        p3.classList.add('slider_card_p')
-        div1.append(p1)
-        div2.append(p2)
-        div3.append(p3)
-
-        const btn1 = document.createElement('button')
-        const btn2 = document.createElement('button')
-        const btn3 = document.createElement('button')
-        btn1.innerHTML = 'Learn more';
-        btn2.innerHTML = 'Learn more';
-        btn3.innerHTML = 'Learn more';
-        btn1.classList.add('slider_card_btn')
-        btn2.classList.add('slider_card_btn')
-        btn3.classList.add('slider_card_btn')
-        btn1.classList.add('open-modal')
-        btn2.classList.add('open-modal')
-        btn3.classList.add('open-modal')
-        div1.append(btn1)
-        div2.append(btn2)
-        div3.append(btn3)
+        for(let i = 0; i <= cardsCount - 1; i++) {
+            targetSlide.append(document.createElement('div'));
+            const divs = targetSlide.childNodes;
+            divs[i].classList.add('slider_card');
+            const pet = randomPet(petsObj);
+            const img = document.createElement('img')
+            img.classList.add('slider_card_img')
+            img.src = pet.img
+            divs[i].append(img)
+            const p = document.createElement('p')
+            p.innerHTML = pet.name
+            p.classList.add('slider_card_p')
+            divs[i].append(p)
+            const btn = document.createElement('button')
+            btn.innerHTML = 'Learn more';
+            btn.classList.add('slider_card_btn')
+            btn.classList.add('open-modal')
+            divs[i].append(btn)
+        }
 
         const openModalFnc = document.querySelectorAll(".open-modal");
         for (let i = 0; i < openModalFnc.length; i++) {
