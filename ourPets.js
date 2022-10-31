@@ -1,16 +1,16 @@
 const navToggle = document.querySelector('.header_burger_btn')
 const body = document.querySelector('body')
-const gradientTop = document.querySelector('.gradient_top')
+const main = document.querySelector('.main')
 
 navToggle.addEventListener('click', () => {
     document.body.classList.toggle('nav-open')
 })
 
-gradientTop.addEventListener('click', () => {
+
+main.addEventListener('click', () => {
     document.body.classList.remove('nav-open')
 })
 
-// carousel
 const slider = document.querySelector('.pets_cards_container');
 const slides = Array.from(slider.children)
 const prevButton = document.querySelector('.slider_prev_btn')
@@ -18,9 +18,11 @@ const nextButton = document.querySelector('.slider_next_btn')
 const slideWidth = slides[0].getBoundingClientRect().width;
 const modal = document.querySelector("#modal");
 const openModal = document.querySelectorAll(".open-modal");
-
 const closeModal = document.querySelector(".close-modal");
 let cardsCount = '';
+
+
+
 
 const petsObj = {
     Katrine: {
@@ -52,6 +54,56 @@ const petsObj = {
         innoculations: 'none',
         diseases: 'none',
         parasites: 'none'
+    },
+    Sophia: {
+        img: 'images/ourPets4.png',
+        name: 'Sophia',
+        animal: 'Dog - NeLabrador',
+        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
+        age: '2 years',
+        innoculations: 'none',
+        diseases: 'none',
+        parasites: 'none'
+    },
+    Timmy: {
+        img: 'images/ourPets5.png',
+        name: 'Timmy',
+        animal: 'Dog - NeLabrador',
+        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
+        age: '2 years',
+        innoculations: 'none',
+        diseases: 'none',
+        parasites: 'none'
+    },
+    Charly: {
+        img: 'images/ourPets6.png',
+        name: 'Charly',
+        animal: 'Dog - NeLabrador',
+        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
+        age: '2 years',
+        innoculations: 'none',
+        diseases: 'none',
+        parasites: 'none'
+    },
+    Scarlett: {
+        img: 'images/ourPets 7.png',
+        name: 'Scarlett',
+        animal: 'Dog - NeLabrador',
+        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
+        age: '2 years',
+        innoculations: 'none',
+        diseases: 'none',
+        parasites: 'none'
+    },
+    Freddie: {
+        img: 'images/ourPets8.png',
+        name: 'Freddie',
+        animal: 'Dog - NeLabrador',
+        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
+        age: '2 years',
+        innoculations: 'none',
+        diseases: 'none',
+        parasites: 'none'
     }
 }
 
@@ -72,11 +124,11 @@ const randomPet = function (obj) {
 
 function cardsCounter() {
     if(slideWidth >= 1096) {
-        cardsCount = 3
+        cardsCount = 8
     } else if(slideWidth >= 580) {
-        cardsCount = 2
+        cardsCount = 8
     } else if(slideWidth >= 270) {
-        cardsCount = 1
+        cardsCount = 8
     }
 }
 cardsCounter()
@@ -144,7 +196,6 @@ window.addEventListener('load', () => {
 for (let i = 0; i < openModal.length; i++) {
     openModal[i].addEventListener("click", () => {
         modal.showModal();
-        
     });
 }
 window.addEventListener('click', (event) => {
