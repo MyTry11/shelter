@@ -1,3 +1,5 @@
+import petsObj from "./petsObj.js"
+
 const navToggle = document.querySelector('.header_burger_btn')
 const body = document.querySelector('body')
 const main = document.querySelector('.main')
@@ -5,7 +7,6 @@ const main = document.querySelector('.main')
 navToggle.addEventListener('click', () => {
     document.body.classList.toggle('nav-open')
 })
-
 
 main.addEventListener('click', () => {
     document.body.classList.remove('nav-open')
@@ -20,118 +21,99 @@ const modal = document.querySelector("#modal");
 const openModal = document.querySelectorAll(".open-modal");
 const closeModal = document.querySelector(".close-modal");
 let cardsCount = '';
-
-
-
-
-const petsObj = {
-    Katrine: {
-        img: 'images/4cbff971ed3cff4fcdd44ba6ce66e1be.png',
-        name: 'Katrine',
-        animal: 'Cat - Chartreux Cat Breed',
-        about: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
-        age: '7 months',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    },
-    Jennifer: {
-        img: 'images/b523e1700aa8817d3357edad5cf38558.png',
-        name: 'Jennifer',
-        animal: 'Dog - Labrador',
-        about: "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
-        age: '2 months',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    },
-    Woody: {
-        img: 'images/d18a0a8b1c7ed291ade3e2e10ff4ebfe.png',
-        name: 'Woody',
-        animal: 'Dog - NeLabrador',
-        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
-        age: '2 years',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    },
-    Sophia: {
-        img: 'images/ourPets4.png',
-        name: 'Sophia',
-        animal: 'Dog - NeLabrador',
-        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
-        age: '2 years',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    },
-    Timmy: {
-        img: 'images/ourPets5.png',
-        name: 'Timmy',
-        animal: 'Dog - NeLabrador',
-        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
-        age: '2 years',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    },
-    Charly: {
-        img: 'images/ourPets6.png',
-        name: 'Charly',
-        animal: 'Dog - NeLabrador',
-        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
-        age: '2 years',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    },
-    Scarlett: {
-        img: 'images/ourPets 7.png',
-        name: 'Scarlett',
-        animal: 'Dog - NeLabrador',
-        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
-        age: '2 years',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    },
-    Freddie: {
-        img: 'images/ourPets8.png',
-        name: 'Freddie',
-        animal: 'Dog - NeLabrador',
-        about: "Animi commodi perspiciatis eligendi dolore corporis quisquam minima, dicta atque vitae nisi quidem ipsa voluptas enim repudiandae in quasi? Blanditiis, labore! Nostrum!",
-        age: '2 years',
-        innoculations: 'none',
-        diseases: 'none',
-        parasites: 'none'
-    }
-}
+let existingPets = []
+const names = document.querySelectorAll('.slider_card_p')
+const dotsNav = document.querySelector('.carousel_nav')
+const dots = Array.from(dotsNav.children) 
+const btnSlideWidth = dots[0].getBoundingClientRect().width;
+// console.log(btnSlideWidth);
 
 function setSlidePosition(slide, index) {
     slide.style.left = slideWidth * index + 'px';
 }
 slides.forEach(setSlidePosition)
 
-const colors = [
-    'aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red',
-    'silver', 'teal', 'yellow'
-]
+function setBtnSlidePosition(slide, index) {
+    slide.style.left = btnSlideWidth * index + 'px';
+}
+dots.forEach(setBtnSlidePosition)
+
+
+
+const fixExistingCards = function() {
+    for (let i = 0; i < names.length; i++) {
+        existingPets.push(names[i].textContent)
+    }
+    if(slideWidth === 580) {
+        existingPets.splice(0, 4)
+    } else if(slideWidth === 270) {
+        existingPets.splice(0, 10)
+    }
+    
+}
+fixExistingCards()
 
 const randomPet = function (obj) {
     const keys = Object.keys(obj);
-    return obj[keys[keys.length * Math.random() << 0]]
+    let thePet = obj[keys[keys.length * Math.random() << 0]]
+    if(existingPets.includes(thePet.name)) {
+        return randomPet(obj)
+    }
+    else { 
+        existingPets.push(thePet.name)
+        return thePet
+    }
+    
 };
 
 function cardsCounter() {
     if(slideWidth >= 1096) {
         cardsCount = 8
     } else if(slideWidth >= 580) {
-        cardsCount = 8
+        cardsCount = 6
     } else if(slideWidth >= 270) {
-        cardsCount = 8
+        cardsCount = 3
     }
 }
 cardsCounter()
+
+function removeCards() {
+    const firstSlide = document.querySelector('.first_slide')
+    const secondSlide = document.querySelector('.second_slide')
+    if(slideWidth >= 1096) {
+        for(let i = 11; i >= 0; i--) {
+            if(i > 5 ) {
+                dotsNav.children[i].remove()
+            }
+        }
+    } else if(slideWidth === 270) {
+        for(let i = 7; i >= 0; i--) {
+            if(i > 2){
+                firstSlide.children[i].remove()
+                secondSlide.children[i].remove()
+            }
+        }
+    } else if(slideWidth === 580) {
+        for(let i = 7; i >= 0; i--) {
+            if (i > 5) {
+                firstSlide.children[i].remove();
+                secondSlide.children[i].remove()
+            }
+        }
+        for(let i = 11; i >= 0; i--) {
+            if(i > 7 ) {
+                dotsNav.children[i].remove()
+            }
+        }
+
+    }
+     
+}
+
+window.addEventListener('load', () => {
+    removeCards()
+})
+
 
 function moveToSlide(slider, currentSlide, targetSlide) {
     if (!targetSlide) {
@@ -148,6 +130,7 @@ function moveToSlide(slider, currentSlide, targetSlide) {
             const pet = randomPet(petsObj);
             const img = document.createElement('img')
             img.classList.add('slider_card_img')
+            img.classList.add('img_270')
             img.src = pet.img
             divs[i].append(img)
             const p = document.createElement('p')
@@ -171,21 +154,67 @@ function moveToSlide(slider, currentSlide, targetSlide) {
     slider.style.transform = `translateX(-${targetSlide.style.left})`;
     currentSlide.classList.remove('current_slide')
     targetSlide.classList.add('current_slide')
+
 }
-
-
 
 nextButton.addEventListener('click', () => {
     const currentSlide = slider.querySelector('.current_slide');
     const nextSlide = currentSlide.nextElementSibling;
-    moveToSlide(slider, currentSlide, nextSlide);
+    const currentDot = dotsNav.querySelector('.current_slide')
+    const nextDot = currentDot.nextElementSibling
+
+    if((slideWidth === 1200 && currentSlide.style.left != `${1200 * 5}px`) || 
+        (slideWidth === 580 && `${currentSlide.style.left}` != `${580 * 7}px`) ||
+        (slideWidth === 270 && `${currentSlide.style.left}` != `${270 * 15}px`)) {
+        moveToSlide(slider, currentSlide, nextSlide);
+        updateDots(currentDot, nextDot)
+    }
+    
 })
 
 prevButton.addEventListener('click', () => {
     const currentSlide = slider.querySelector('.current_slide')
-    const prevSlide = currentSlide.previousElementSibling;
-    moveToSlide(slider, currentSlide, prevSlide)
+    let prevSlide = currentSlide.previousElementSibling;
+    const currentDot = dotsNav.querySelector('.current_slide')
+    const prevDot = currentDot.previousElementSibling
+
+    if(prevSlide != null) {
+        moveToSlide(slider, currentSlide, prevSlide);
+        updateDots(currentDot, prevDot) 
+    }
 })
+
+const updateDots = (currentDot, targetDot) => {
+    console.log(targetDot.style.left);
+    console.log(slideWidth);
+    if(targetDot.style.left <= '168px' && slideWidth === 1200){
+        dotsNav.style.transform = `translateX(-${targetDot.style.left})`;
+    } else if(targetDot.style.left <= '280px' && slideWidth === 580) {
+        dotsNav.style.transform = `translateX(-${targetDot.style.left})`;
+    } 
+    else if(targetDot.style.left <= '504px' && slideWidth === 270) {
+        dotsNav.style.transform = `translateX(-${targetDot.style.left})`;
+    }
+    
+    currentDot.classList.remove('current_slide')
+    targetDot.classList.add('current_slide')
+    
+}
+
+dotsNav.addEventListener('click', (e) => {
+    const targetDot = e.target.closest('button');
+
+    if(!targetDot) return;
+
+    const currentSlide = slider.querySelector('.current_slide')
+    const currentDot = dotsNav.querySelector('.current_slide')
+    const targetIndex = dots.findIndex(dot => dot === targetDot)
+    const targetSlide = slides[targetIndex]
+
+    moveToSlide(slider, currentSlide, targetSlide)
+    updateDots(currentDot, targetDot)
+})
+
 
 window.addEventListener('load', () => {
     const currentSlide = slider.querySelector('.current_slide')
@@ -223,3 +252,4 @@ window.addEventListener('click', (event) => {
 closeModal.addEventListener("click", () => {
     modal.close();
 });
+
