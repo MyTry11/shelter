@@ -604,7 +604,7 @@ h1 {
   width: 1200px;
   height: 435px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   position: absolute;
 }
 
@@ -754,6 +754,8 @@ h1 {
 
   .slide {
     width: 580px;
+    justify-content: space-between;
+
   }
 
   .third_card {
